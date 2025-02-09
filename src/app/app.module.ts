@@ -3,28 +3,25 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { UnauthroizeComponent } from './unauthroize/unauthroize.component';
-// import { LoginComponent } from './registration-module/login/login.component';
-// import { RegisterComponent } from './registration-module/register/register.component';
-// import { ForgotPasswordComponent } from './registration-module/forgot-password/forgot-password.component';
-// import { ChangePasswordComponent } from './registration-module/change-password/change-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './common/interceptors/auth-interceptor.service';
 
 @NgModule({
   declarations: [		
     AppComponent,
-      HomeComponent,
-      UnauthroizeComponent,
-      // LoginComponent,
-      // RegisterComponent,
-      // ForgotPasswordComponent,
-      // ChangePasswordComponent
+      UnauthroizeComponent
    ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
