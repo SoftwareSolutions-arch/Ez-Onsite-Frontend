@@ -5,7 +5,8 @@ import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { RegisterRoute } from './register-route.routing';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { RegistrationService } from './registration.service';
 
 @NgModule({
   declarations: [
@@ -15,8 +16,12 @@ import { RegisterRoute } from './register-route.routing';
     ChangePasswordComponent
   ],
   imports: [
+    ReactiveFormsModule,
     CommonModule,
     RegisterRoute
+  ],
+  providers: [
+    RegistrationService
   ]
 })
 export class RegisterModule { }
