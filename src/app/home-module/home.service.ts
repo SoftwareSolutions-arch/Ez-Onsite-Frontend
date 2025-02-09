@@ -18,4 +18,9 @@ export class HomeService {
     getUser(): Observable<any> {
       return this.http.get(`${this.apiUrl}/get-users`,{withCredentials: true});
     }
+
+       // Register a new user
+   logoutUser(): Observable<any> {
+    return this.http.post(`${this.apiUrl}/logout`,{});
+  }
 }

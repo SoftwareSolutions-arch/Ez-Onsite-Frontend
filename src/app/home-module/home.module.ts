@@ -5,12 +5,14 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeRoutes } from './home.routing';
 import { HomeService } from './home.service';
+import { MenubarComponent } from './menubar/menubar.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MenubarComponent
   ],
   imports: [
     CommonModule,

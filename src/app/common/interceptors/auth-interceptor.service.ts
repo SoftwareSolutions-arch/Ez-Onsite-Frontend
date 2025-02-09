@@ -18,10 +18,11 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     return next.handle(cloned).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) { // If token expired or unauthorized
-          this.authService.logout(); // Clear token and redirect
-          this.router.navigate(['/']); // Navigate to login
+      catchError((error: HttpErrorResponse) => {        
+        if (error.status === 403 || error.status === 401) { 
+          this.authService.logout();
+          localStorage.removeItem('token');
+          this.router.navigate(['/api/login']);
         }
         return throwError(error);
       })

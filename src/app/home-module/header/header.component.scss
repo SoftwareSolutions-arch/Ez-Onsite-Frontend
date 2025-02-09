@@ -1,0 +1,66 @@
+// Header Background
+.header-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  // Left Section: Aligns Items Properly
+  .left-section {
+    flex: 0.2;
+  }
+  
+  // Right Section: Aligns Items Properly
+  .right-section {
+    flex: 0.2;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px; // Adds spacing between icons
+  }
+  
+  // Center Search Bar: Shortened and Centered
+  .search-container {
+    flex: 0.5;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .search-input {
+    width: 250px;
+    border-radius: 20px 0 0 20px;
+  }
+  
+  .search-btn {
+    border-radius: 0 20px 20px 0;
+  }
+  
+  // Search Bar Focus Effect
+  .form-control:focus {
+    box-shadow: none;
+    border-color: #ffffff;
+  }
+  
+  // Button Hover Effect
+  .btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  // Wishlist Icon Styling
+  .wishlist-icon {
+    color: #ff4d4d; // Heart color
+    transition: transform 0.2s ease;
+  }
+  
+  .wishlist-icon:hover {
+    transform: scale(1.1);
+  }
+  
+  // Cart Icon Styling
+  .fa-shopping-cart:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+  }
+  
+  // Cart Badge Styling
+  .cart-badge {
+    font-size: 0.6rem;
+  }
+  

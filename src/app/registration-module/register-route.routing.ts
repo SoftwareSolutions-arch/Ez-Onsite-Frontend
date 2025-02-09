@@ -5,7 +5,6 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-    {path: '', component: LoginComponent},
     {path: 'login', component: LoginComponent},
     {path: 'change-password', component: ChangePasswordComponent},
     {path: 'forgot-password', component: ForgotPasswordComponent},

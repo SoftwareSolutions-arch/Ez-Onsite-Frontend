@@ -14,7 +14,12 @@ export class LoginComponent {
   errorMessage = '';
   isLoading = false;
 
-  constructor(private router: Router,private registerService: RegistrationService,private authService:AuthService) {}
+  constructor(private router: Router,private registerService: RegistrationService,private authService:AuthService) {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.router.navigate(['/']);
+    }
+  }
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -31,7 +36,6 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Login Form Data:', this.loginForm.value);
       this.registerService.loginUser(this.loginForm.value).subscribe({
         next: (response) => {
           if (response.status === 'success') {

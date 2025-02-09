@@ -4,11 +4,10 @@ import { HomeService } from '../home.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
-  constructor(public homeService:HomeService) { }
+  constructor(public homeService: HomeService) {}
 
   ngOnInit(): void {
     this.getAPI();
@@ -18,7 +17,7 @@ export class HomeComponent implements OnInit {
     this.homeService.getUser().subscribe({
       next: (response) => {
         console.log('User Data:', response);
-      }})
+      },
+    });
   }
-
 }
