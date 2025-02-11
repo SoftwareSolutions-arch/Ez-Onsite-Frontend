@@ -19,4 +19,9 @@ export class RegistrationService {
    loginUser(userData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, userData);
   }
+
+  //dynhamic route 
+    dyanmicRoute(data: any,url:any): Observable<any> {
+      return this.http.post(`${this.apiUrl}/${url}`, data);
+    }
 }

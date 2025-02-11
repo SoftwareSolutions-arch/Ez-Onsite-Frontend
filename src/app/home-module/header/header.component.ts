@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../home.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/common/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +13,8 @@ export class HeaderComponent implements OnInit {
   showSuggestions:any;
   searchSuggestions:any;
   showNotifications:boolean=false;
-  isMenuOpen=true;
-  successMessage = '';
-  errorMessage = '';
   isLoading = false;
-  constructor(public homeService: HomeService,private router: Router) { }
+  constructor(public homeService: HomeService,private router: Router,public authService:AuthService) { }
 
   ngOnInit(): void {
   }
@@ -28,15 +26,15 @@ export class HeaderComponent implements OnInit {
       next: (response) => {
         if (response.status === 'success') {
           localStorage.removeItem('token');
-          this.successMessage = response.message || 'Logout successfully!';
+          this.authService.showSuccessToast('Logout successfully!');
           this.router.navigate(['/api/login']);
         }
         else{
-          this.errorMessage = response.message || 'Something went wrong!';
+          this.authService.showSuccessToast('Something went wrong');
         }
       },
       error: (error) => {
-        this.errorMessage = error.error.message || 'Something went wrong!';
+        this.authService.showSuccessToast(error.error.message);
       },
       complete: () => {
         this.isLoading = false;

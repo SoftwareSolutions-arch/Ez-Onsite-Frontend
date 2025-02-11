@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UnauthroizeComponent } from './unauthroize/unauthroize.component';
 import { AuthInterceptor } from './common/interceptors/auth-interceptor.service';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AuthInterceptor } from './common/interceptors/auth-interceptor.service'
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxLoadingModule.forRoot({})
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
