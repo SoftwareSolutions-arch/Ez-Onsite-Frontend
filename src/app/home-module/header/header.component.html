@@ -1,61 +1,123 @@
 <!-- Header -->
 <header class="sticky-top shadow-sm header-bg">
   <div class="container py-2">
-    <div class="d-flex align-items-center justify-content-between">
-      
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
+
       <!-- Left: Menu & Store Name -->
-      <div class="d-flex align-items-center left-section">
-        <button class="btn btn-outline-light me-3" (click)="toggleMenu()">
-          <i class="fas fa-bars"></i> <!-- Menu Icon -->
+      <div class="d-flex align-items-center left-section order-1">
+        <button class="btn btn-outline-light hover-scale me-2 me-lg-3" (click)="toggleMenu()">
+          <i class="fas fa-bars"></i>
         </button>
-        <div class="text-white fw-bold fs-4">MyStore</div>
+        <div class="text-white fw-bold fs-4 brand-name">MyStore</div>
+      </div>
+
+      <!-- Mobile Search Toggle -->
+      <div class="d-lg-none order-3 ms-auto">
+        <button class="btn btn-light hover-scale" type="button" data-bs-toggle="collapse" data-bs-target="#mobileSearch">
+          <i class="fas fa-search"></i>
+        </button>
       </div>
 
       <!-- Center: Search Bar -->
-      <div class="search-container">
-        <div class="input-group">
-          <input type="text" class="form-control search-input" placeholder="Search Amazon.in" aria-label="Search">
-          <button class="btn btn-light search-btn" type="button">
-            <i class="fas fa-search"></i> <!-- Search Icon -->
-          </button>
+      <div class="search-container order-lg-2 order-4 col-12 col-lg-6">
+        <div class="collapse d-lg-block" id="mobileSearch">
+          <div class="input-group mx-auto" style="max-width: 600px;">
+            <input type="text" class="form-control search-input" placeholder="Search products...">
+            <button class="btn btn-primary search-btn" type="button">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
         </div>
       </div>
 
-      <!-- Right: Logout, Wishlist & Cart -->
-      <div class="d-flex align-items-center right-section">
-        <!-- Wishlist Icon -->
-        <div class="position-relative me-3">
-          <a routerLink="/wishlist" class="text-decoration-none text-white">
-            <i class="fas fa-heart fs-5 wishlist-icon"></i>
-          </a>
-        </div>
+      <!-- Right: Icons -->
+      <div class="d-flex align-items-center right-section order-2 order-lg-3">
+        <!-- Wishlist -->
+        <a routerLink="/wishlist" class="icon-link position-relative me-2 me-lg-3">
+          <i class="fas fa-heart fs-5"></i>
+        </a>
 
-        <!-- Cart Icon -->
-        <div class="position-relative">
-          <a routerLink="/cart" class="text-decoration-none text-white">
-            <i class="fas fa-shopping-cart fs-5"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">
-              3 <!-- Static cart count -->
-            </span>
-          </a>
-        </div>
+        <!-- Cart -->
+        <a routerLink="/cart" class="icon-link position-relative me-2 me-lg-3">
+          <i class="fas fa-shopping-cart fs-5"></i>
+          <span class="badge bg-danger cart-badge">3</span>
+        </a>
 
-         <!-- Logout Button -->
-         <div class="dropdown">
-          <button class="btn btn-profile" data-bs-toggle="dropdown">
-            <i class="fas fa-user-circle text-white"></i>
+        <!-- Profile Dropdown -->
+        <div class="dropdown">
+          <button class="btn hover-scale p-0" data-bs-toggle="dropdown">
+            <i class="fas fa-user-circle text-white fs-5"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">My Account</a></li>
-            <li><a class="dropdown-item" href="#">Orders</a></li>
+            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>My Account</a></li>
+            <li><a class="dropdown-item" href="#"><i class="fas fa-box me-2"></i>Orders</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
-              <button class="btn  me-6 dropdown-item" (click)="logout()">
-                <i class="fas fa-sign-out-alt"></i> Logout
+              <button class="dropdown-item" (click)="logout()">
+                <i class="fas fa-sign-out-alt me-2"></i>Logout
               </button>
             </li>
           </ul>
         </div>
+
+        <!-- Added Menu Sidebar -->
+      <div class="menu-sidebar" [class.active]="isMenuOpen">
+        <div class="sidebar-header">
+          <h5 class="text-white mb-0">Shop by Category</h5>
+          <button class="btn btn-close btn-close-white" (click)="toggleMenu()"></button>
+        </div>
+        
+        <div class="sidebar-body">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/electronics">
+                <i class="fas fa-laptop me-2"></i>
+                Electronics
+                <i class="fas fa-chevron-right ms-auto"></i>
+              </a>
+              <ul class="sub-menu">
+                <li><a routerLink="/electronics/laptops">Laptops</a></li>
+                <li><a routerLink="/electronics/smartphones">Smartphones</a></li>
+                <li><a routerLink="/electronics/accessories">Accessories</a></li>
+              </ul>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/fashion">
+                <i class="fas fa-tshirt me-2"></i>
+                Fashion
+                <i class="fas fa-chevron-right ms-auto"></i>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/home-kitchen">
+                <i class="fas fa-home me-2"></i>
+                Home & Kitchen
+                <i class="fas fa-chevron-right ms-auto"></i>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/books">
+                <i class="fas fa-book me-2"></i>
+                Books
+                <i class="fas fa-chevron-right ms-auto"></i>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/todays-deals">
+                <i class="fas fa-bolt me-2"></i>
+                Today's Deals
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Menu Backdrop -->
+        <div class="sidebar-backdrop" (click)="toggleMenu()"></div>
+      </div>
       </div>
     </div>
   </div>

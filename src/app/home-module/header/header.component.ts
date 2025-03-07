@@ -14,12 +14,11 @@ export class HeaderComponent implements OnInit {
   searchSuggestions:any;
   showNotifications:boolean=false;
   isLoading = false;
+  isMenuOpen = false;
   constructor(public homeService: HomeService,private router: Router,public authService:AuthService) { }
 
   ngOnInit(): void {
   }
-
-  toggleMenu() {}
 
   logout() {
     this.homeService.logoutUser().subscribe({
@@ -49,6 +48,8 @@ export class HeaderComponent implements OnInit {
 
   toggleNotifications() {}
 
-
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 
 }
