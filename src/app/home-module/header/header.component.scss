@@ -203,3 +203,31 @@ $hover-color: #ffffff;
     left: -80vw;
   }
 }
+// Add these styles to your SCSS
+.cart-dropdown {
+  min-width: 320px;
+  max-height: 60vh;
+  overflow-y: auto;
+  
+  .dropdown-item {
+    transition: background-color 0.2s;
+    
+    &:hover {
+      background-color: #f8f9fa;
+    }
+  }
+}
+
+.cart-item-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 0.75rem;
+}

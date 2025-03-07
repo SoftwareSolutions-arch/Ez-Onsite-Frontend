@@ -15,6 +15,9 @@ export class HeaderComponent implements OnInit {
   showNotifications:boolean=false;
   isLoading = false;
   isMenuOpen = false;
+  cartItems: any[] = [];
+  cartItemCount = 0;
+  cartTotal = 0;
   constructor(public homeService: HomeService,private router: Router,public authService:AuthService) { }
 
   ngOnInit(): void {
@@ -51,5 +54,7 @@ export class HeaderComponent implements OnInit {
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
+
+  removeFromCart(item: any) {}
 
 }
