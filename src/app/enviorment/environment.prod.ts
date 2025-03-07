@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    baseUrl: 'https://ez-onsite-backend-production.up.railway.app/api' // Update this for production
+    baseUrl: 'https://your-production-api.com/api' // Update this for production
   };
   

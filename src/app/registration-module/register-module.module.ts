@@ -7,6 +7,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { RegisterRoute } from './register-route.routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationService } from './registration.service';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RegistrationService } from './registration.service';
   imports: [
     ReactiveFormsModule,
     CommonModule,
-    RegisterRoute
+    RegisterRoute,
+    NgxLoadingModule.forRoot({})
   ],
   providers: [
     RegistrationService

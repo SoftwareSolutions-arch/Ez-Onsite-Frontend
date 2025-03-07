@@ -10,12 +10,11 @@ import { AuthService } from 'src/app/common/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  successMessage = '';
-  errorMessage = '';
   isLoading = false;
 
   constructor(private router: Router,private registerService: RegistrationService,private authService:AuthService) {
     const token = localStorage.getItem('token');
+   
     if (token) {
       this.router.navigate(['/']);
     }
@@ -36,20 +35,23 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
+      this.isLoading = true;
       this.registerService.loginUser(this.loginForm.value).subscribe({
         next: (response) => {
+          this.isLoading = false;
           if (response.status === 'success') {
             this.loginForm.reset();
-            this.successMessage = response.message || 'Login successfully!';
+            this.authService.showSuccessToast('Login successfully!');
             this.authService.saveToken(response.token);
             this.router.navigate(['/home']);
           }
           else{
-            this.errorMessage = response.message || 'Something went wrong!';
+            this.authService.showErrorToast("Something went wrong");
           }
         },
         error: (error) => {
-          this.errorMessage = error.error.message || 'Something went wrong!';
+          this.isLoading = false;
+          this.authService.showErrorToast(error.error.message);
         },
         complete: () => {
           this.isLoading = false;
