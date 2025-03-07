@@ -2,352 +2,265 @@
 
 <!-- Main Content -->
 <main class="container-fluid py-4" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
-    <!-- Tech Banner Carousel -->
-    <div class="row mb-4">
-      <div class="col-12">
-        <div id="techCarousel" class="carousel slide rounded-4 shadow-lg" data-bs-ride="carousel">
-          <div class="carousel-inner" style="height: 400px;">
-            <div class="carousel-item active h-100">
-              <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
-                   class="d-block w-100 h-100 object-fit-cover" alt="Tech Banner 1">
-            </div>
-            <div class="carousel-item h-100">
-              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
-                   class="d-block w-100 h-100 object-fit-cover" alt="Tech Banner 2">
-            </div>
-            <div class="carousel-item h-100">
-              <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
-                   class="d-block w-100 h-100 object-fit-cover" alt="Tech Banner 3">
-            </div>
+  <!-- Tech Banner Carousel -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div id="techCarousel" class="carousel slide rounded-4 shadow-lg" data-bs-ride="carousel">
+        <div class="carousel-inner" style="height: 400px;">
+          <div class="carousel-item active h-100">
+            <img
+              src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+              class="d-block w-100 h-100 object-fit-cover" alt="Tech Banner 1">
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#techCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#techCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+          <div class="carousel-item h-100">
+            <img
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+              class="d-block w-100 h-100 object-fit-cover" alt="Tech Banner 2">
+          </div>
+          <div class="carousel-item h-100">
+            <img
+              src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+              class="d-block w-100 h-100 object-fit-cover" alt="Tech Banner 3">
+          </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#techCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#techCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </div>
+  </div>
 
-    <!-- Featured Products -->
-    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 px-3">
-      <!-- Product 1 -->
-      <div class="col" [routerLink]="['/product-details']" routerLinkActive="router-link-active">
-        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tech-card position-relative">
-          <!-- Eye Icon with click prevention -->
-          <div class="position-absolute top-0 start-0 m-2">
-            <button class="btn btn-light btn-sm rounded-circle p-2 quick-view-btn shadow-sm"
-                    (click)="$event.stopPropagation()"
-                    data-bs-toggle="modal" 
-                    data-bs-target="#quickViewModal">
-              <i class="fas fa-eye"></i>
-            </button>
-          </div>
-          
-          <img src="https://oasis.opstatics.com/content/dam/oasis/page/2023/na/oneplus-11/specs/green-img.png" 
-               class="card-img-top" alt="Smartphone">
-          
-          <div class="card-body">
-            <div class="badge bg-danger mb-2">10% Off</div>
-            <h5 class="card-title fw-bold">OnePlus 11 5G</h5>
-            <p class="card-text text-muted small">6.7" QHD+ AMOLED, Snapdragon 8 Gen 2, 50MP Camera</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <span class="text-success fw-bold">$729</span>
-                <small class="text-muted ms-2"><del>$799</del></small>
-              </div>
-              <button class="btn btn-sm btn-primary rounded-pill px-3">
-                <i class="fas fa-cart-plus"></i> Add
-              </button>
-            </div>
-          </div>
+  <!-- Products -->
+  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 px-3">
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4" *ngFor="let product of products">
+      <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tech-card position-relative"
+        [routerLink]="['/product-details', product.id]" routerLinkActive="router-link-active">
+
+        <!-- Eye Icon -->
+        <div class="position-absolute top-0 start-0 m-2">
+          <button class="btn btn-light btn-sm rounded-circle p-2 quick-view-btn shadow-sm"
+            (click)="$event.stopPropagation()" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+            <i class="fas fa-eye"></i>
+          </button>
         </div>
-      </div>
 
-      <div class="col" [routerLink]="['/product-details']" routerLinkActive="router-link-active">
-        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tech-card position-relative">
-          <!-- Eye Icon with click prevention -->
-          <div class="position-absolute top-0 start-0 m-2">
-            <button class="btn btn-light btn-sm rounded-circle p-2 quick-view-btn shadow-sm"
-                    (click)="$event.stopPropagation()"
-                    data-bs-toggle="modal" 
-                    data-bs-target="#quickViewModal">
-              <i class="fas fa-eye"></i>
-            </button>
-          </div>
-          
-          <img src="https://oasis.opstatics.com/content/dam/oasis/page/2023/na/oneplus-11/specs/green-img.png" 
-               class="card-img-top" alt="Smartphone">
-          
-          <div class="card-body">
-            <div class="badge bg-danger mb-2">10% Off</div>
-            <h5 class="card-title fw-bold">OnePlus 11 5G</h5>
-            <p class="card-text text-muted small">6.7" QHD+ AMOLED, Snapdragon 8 Gen 2, 50MP Camera</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <span class="text-success fw-bold">$729</span>
-                <small class="text-muted ms-2"><del>$799</del></small>
-              </div>
-              <button class="btn btn-sm btn-primary rounded-pill px-3">
-                <i class="fas fa-cart-plus"></i> Add
-              </button>
-            </div>
-          </div>
+        <!-- Wishlist Heart Icon -->
+        <div class="position-absolute top-0 end-0 m-2">
+          <button class="btn btn-light btn-sm rounded-circle p-2 wishlist-btn shadow-sm"
+            (click)="toggleWishlist(product.id); $event.stopPropagation()">
+            <i class="far fa-heart" [class.fas]="product.isWishlist" [class.text-danger]="product.isWishlist"></i>
+          </button>
         </div>
-      </div>
 
-      <div class="col" [routerLink]="['/product-details']" routerLinkActive="router-link-active">
-        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tech-card position-relative">
-          <!-- Eye Icon with click prevention -->
-          <div class="position-absolute top-0 start-0 m-2">
-            <button class="btn btn-light btn-sm rounded-circle p-2 quick-view-btn shadow-sm"
-                    (click)="$event.stopPropagation()"
-                    data-bs-toggle="modal" 
-                    data-bs-target="#quickViewModal">
-              <i class="fas fa-eye"></i>
-            </button>
-          </div>
-          
-          <img src="https://oasis.opstatics.com/content/dam/oasis/page/2023/na/oneplus-11/specs/green-img.png" 
-               class="card-img-top" alt="Smartphone">
-          
-          <div class="card-body">
-            <div class="badge bg-danger mb-2">10% Off</div>
-            <h5 class="card-title fw-bold">OnePlus 11 5G</h5>
-            <p class="card-text text-muted small">6.7" QHD+ AMOLED, Snapdragon 8 Gen 2, 50MP Camera</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <span class="text-success fw-bold">$729</span>
-                <small class="text-muted ms-2"><del>$799</del></small>
-              </div>
-              <button class="btn btn-sm btn-primary rounded-pill px-3">
-                <i class="fas fa-cart-plus"></i> Add
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+        <img [src]="product.image" class="card-img-top" [alt]="product.name">
 
-      <div class="col" [routerLink]="['/product-details']" routerLinkActive="router-link-active">
-        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tech-card position-relative">
-          <!-- Eye Icon with click prevention -->
-          <div class="position-absolute top-0 start-0 m-2">
-            <button class="btn btn-light btn-sm rounded-circle p-2 quick-view-btn shadow-sm"
-                    (click)="$event.stopPropagation()"
-                    data-bs-toggle="modal" 
-                    data-bs-target="#quickViewModal">
-              <i class="fas fa-eye"></i>
-            </button>
-          </div>
-          
-          <img src="https://oasis.opstatics.com/content/dam/oasis/page/2023/na/oneplus-11/specs/green-img.png" 
-               class="card-img-top" alt="Smartphone">
-          
-          <div class="card-body">
-            <div class="badge bg-danger mb-2">10% Off</div>
-            <h5 class="card-title fw-bold">OnePlus 11 5G</h5>
-            <p class="card-text text-muted small">6.7" QHD+ AMOLED, Snapdragon 8 Gen 2, 50MP Camera</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <span class="text-success fw-bold">$729</span>
-                <small class="text-muted ms-2"><del>$799</del></small>
-              </div>
-              <button class="btn btn-sm btn-primary rounded-pill px-3">
-                <i class="fas fa-cart-plus"></i> Add
-              </button>
+        <div class="card-body">
+          <div class="badge bg-danger mb-2">{{ product.discount }}% Off</div>
+          <h5 class="card-title fw-bold">{{ product.name }}</h5>
+          <p class="card-text text-muted small">{{ product.description }}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <span class="text-success fw-bold">{{ product.price | currency }}</span>
+              <small class="text-muted ms-2"><del>{{ product.originalPrice | currency }}</del></small>
             </div>
+            <button class="btn btn-sm btn-primary rounded-pill px-3">
+              <i class="fas fa-cart-plus"></i> Add
+            </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Tech Categories Section -->
-    <section class="container-fluid py-5">
-      <div class="container">
-        <!-- Trending Gadgets Section -->
-        <div class="row mb-5">
-          <div class="col-12 mb-4">
-            <h2 class="fw-bold fs-1 border-bottom pb-3" style="border-color: #2A5CFF!important;">
-              <i class="fas fa-rocket me-2"></i>Trending Tech
-            </h2>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <div class="card border-0 tech-category-card h-100">
-              <div class="card-body text-center p-4">
-                <i class="fas fa-smartwatch fa-3x mb-3 gradient-icon-warning"></i>
-                <h5 class="fw-bold mb-2">Smart Watches</h5>
-                <p class="text-muted small mb-0">Health tracking & premium designs</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <div class="card border-0 tech-category-card h-100">
-              <div class="card-body text-center p-4">
-                <i class="fas fa-camera fa-3x mb-3 gradient-icon-danger"></i>
-                <h5 class="fw-bold mb-2">Mirrorless Cameras</h5>
-                <p class="text-muted small mb-0">4K video & pro photography</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <div class="card border-0 tech-category-card h-100">
-              <div class="card-body text-center p-4">
-                <i class="fas fa-headphones-alt fa-3x mb-3 gradient-icon-success"></i>
-                <h5 class="fw-bold mb-2">Hi-Fi Audio</h5>
-                <p class="text-muted small mb-0">Premium sound systems</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <div class="card border-0 tech-category-card h-100">
-              <div class="card-body text-center p-4">
-                <i class="fas fa-gamepad fa-3x mb-3 gradient-icon-purple"></i>
-                <h5 class="fw-bold mb-2">Gaming Consoles</h5>
-                <p class="text-muted small mb-0">Next-gen gaming experience</p>
-              </div>
+  <!-- Tech Categories Section -->
+  <section class="container-fluid py-5">
+    <div class="container">
+      <!-- Trending Gadgets Section -->
+      <div class="row mb-5">
+        <div class="col-12 mb-4">
+          <h2 class="fw-bold fs-1 border-bottom pb-3" style="border-color: #2A5CFF!important;">
+            <i class="fas fa-rocket me-2"></i>Trending Tech
+          </h2>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <div class="card border-0 tech-category-card h-100">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-smartwatch fa-3x mb-3 gradient-icon-warning"></i>
+              <h5 class="fw-bold mb-2">Smart Watches</h5>
+              <p class="text-muted small mb-0">Health tracking & premium designs</p>
             </div>
           </div>
         </div>
-    
-        <!-- Premium Laptops Section -->
-        <div class="row mb-5">
-          <div class="col-12 mb-4">
-            <h2 class="fw-bold fs-1 border-bottom pb-3" style="border-color: #2A5CFF!important;">
-              <i class="fas fa-laptop-code me-2"></i>Elite Laptops
-            </h2>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <div class="card border-0 tech-category-card h-100">
-              <div class="card-body text-center p-4">
-                <i class="fas fa-chess-queen fa-3x mb-3 gradient-icon-primary"></i>
-                <h5 class="fw-bold mb-2">Ultrabooks</h5>
-                <p class="text-muted small mb-0">Slim & powerful machines</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <div class="card border-0 tech-category-card h-100">
-              <div class="card-body text-center p-4">
-                <i class="fas fa-microchip fa-3x mb-3 gradient-icon-info"></i>
-                <h5 class="fw-bold mb-2">Workstations</h5>
-                <p class="text-muted small mb-0">For creators & developers</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <div class="card border-0 tech-category-card h-100">
-              <div class="card-body text-center p-4">
-                <i class="fas fa-tablet-alt fa-3x mb-3 gradient-icon-warning"></i>
-                <h5 class="fw-bold mb-2">2-in-1 Convertibles</h5>
-                <p class="text-muted small mb-0">Touchscreen versatility</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <div class="card border-0 tech-category-card h-100">
-              <div class="card-body text-center p-4">
-                <i class="fas fa-tachometer-alt fa-3x mb-3 gradient-icon-danger"></i>
-                <h5 class="fw-bold mb-2">Performance Kings</h5>
-                <p class="text-muted small mb-0">Top-tier specifications</p>
-              </div>
+        <div class="col-6 col-md-3 mb-3">
+          <div class="card border-0 tech-category-card h-100">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-camera fa-3x mb-3 gradient-icon-danger"></i>
+              <h5 class="fw-bold mb-2">Mirrorless Cameras</h5>
+              <p class="text-muted small mb-0">4K video & pro photography</p>
             </div>
           </div>
         </div>
-    
-        <!-- Smart Ecosystem Section -->
-        <div class="row mb-5">
-          <div class="col-12 mb-4">
-            <h2 class="fw-bold fs-1 border-bottom pb-3" style="border-color: #2A5CFF!important;">
-              <i class="fas fa-home-heart me-2"></i>Smart Ecosystem
-            </h2>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <div class="card border-0 tech-category-card h-100">
-              <div class="card-body text-center p-4">
-                <i class="fas fa-shield-alt fa-3x mb-3 gradient-icon-success"></i>
-                <h5 class="fw-bold mb-2">Security Systems</h5>
-                <p class="text-muted small mb-0">Smart locks & cameras</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <div class="card border-0 tech-category-card h-100">
-              <div class="card-body text-center p-4">
-                <i class="fas fa-lightbulb fa-3x mb-3 gradient-icon-purple"></i>
-                <h5 class="fw-bold mb-2">Lighting</h5>
-                <p class="text-muted small mb-0">Ambient smart lighting</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <div class="card border-0 tech-category-card h-100">
-              <div class="card-body text-center p-4">
-                <i class="fas fa-wind fa-3x mb-3 gradient-icon-primary"></i>
-                <h5 class="fw-bold mb-2">Climate Control</h5>
-                <p class="text-muted small mb-0">Smart ACs & purifiers</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <div class="card border-0 tech-category-card h-100">
-              <div class="card-body text-center p-4">
-                <i class="fas fa-blender fa-3x mb-3 gradient-icon-info"></i>
-                <h5 class="fw-bold mb-2">Kitchen Tech</h5>
-                <p class="text-muted small mb-0">Smart appliances</p>
-              </div>
+        <div class="col-6 col-md-3 mb-3">
+          <div class="card border-0 tech-category-card h-100">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-headphones-alt fa-3x mb-3 gradient-icon-success"></i>
+              <h5 class="fw-bold mb-2">Hi-Fi Audio</h5>
+              <p class="text-muted small mb-0">Premium sound systems</p>
             </div>
           </div>
         </div>
-    
-        <!-- Emerging Tech Section -->
-        <div class="row mb-5">
-          <div class="col-12 mb-4">
-            <h2 class="fw-bold fs-1 border-bottom pb-3" style="border-color: #2A5CFF!important;">
-              <i class="fas fa-microscope me-2"></i>Emerging Tech
-            </h2>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <div class="card border-0 tech-category-card h-100">
-              <div class="card-body text-center p-4">
-                <i class="fas fa-vr-cardboard fa-3x mb-3 gradient-icon-danger"></i>
-                <h5 class="fw-bold mb-2">VR/AR Headsets</h5>
-                <p class="text-muted small mb-0">Immersive experiences</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <div class="card border-0 tech-category-card h-100">
-              <div class="card-body text-center p-4">
-                <i class="fas fa-drone fa-3x mb-3 gradient-icon-success"></i>
-                <h5 class="fw-bold mb-2">Advanced Drones</h5>
-                <p class="text-muted small mb-0">4K filming & AI tracking</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <div class="card border-0 tech-category-card h-100">
-              <div class="card-body text-center p-4">
-                <i class="fas fa-robot fa-3x mb-3 gradient-icon-primary"></i>
-                <h5 class="fw-bold mb-2">Home Robotics</h5>
-                <p class="text-muted small mb-0">Automation helpers</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <div class="card border-0 tech-category-card h-100">
-              <div class="card-body text-center p-4">
-                <i class="fas fa-charging-station fa-3x mb-3 gradient-icon-warning"></i>
-                <h5 class="fw-bold mb-2">EV Tech</h5>
-                <p class="text-muted small mb-0">Future of mobility</p>
-              </div>
+        <div class="col-6 col-md-3 mb-3">
+          <div class="card border-0 tech-category-card h-100">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-gamepad fa-3x mb-3 gradient-icon-purple"></i>
+              <h5 class="fw-bold mb-2">Gaming Consoles</h5>
+              <p class="text-muted small mb-0">Next-gen gaming experience</p>
             </div>
           </div>
         </div>
       </div>
-    </section>  
+
+      <!-- Premium Laptops Section -->
+      <div class="row mb-5">
+        <div class="col-12 mb-4">
+          <h2 class="fw-bold fs-1 border-bottom pb-3" style="border-color: #2A5CFF!important;">
+            <i class="fas fa-laptop-code me-2"></i>Elite Laptops
+          </h2>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <div class="card border-0 tech-category-card h-100">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-chess-queen fa-3x mb-3 gradient-icon-primary"></i>
+              <h5 class="fw-bold mb-2">Ultrabooks</h5>
+              <p class="text-muted small mb-0">Slim & powerful machines</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <div class="card border-0 tech-category-card h-100">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-microchip fa-3x mb-3 gradient-icon-info"></i>
+              <h5 class="fw-bold mb-2">Workstations</h5>
+              <p class="text-muted small mb-0">For creators & developers</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <div class="card border-0 tech-category-card h-100">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-tablet-alt fa-3x mb-3 gradient-icon-warning"></i>
+              <h5 class="fw-bold mb-2">2-in-1 Convertibles</h5>
+              <p class="text-muted small mb-0">Touchscreen versatility</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <div class="card border-0 tech-category-card h-100">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-tachometer-alt fa-3x mb-3 gradient-icon-danger"></i>
+              <h5 class="fw-bold mb-2">Performance Kings</h5>
+              <p class="text-muted small mb-0">Top-tier specifications</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Smart Ecosystem Section -->
+      <div class="row mb-5">
+        <div class="col-12 mb-4">
+          <h2 class="fw-bold fs-1 border-bottom pb-3" style="border-color: #2A5CFF!important;">
+            <i class="fas fa-home-heart me-2"></i>Smart Ecosystem
+          </h2>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <div class="card border-0 tech-category-card h-100">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-shield-alt fa-3x mb-3 gradient-icon-success"></i>
+              <h5 class="fw-bold mb-2">Security Systems</h5>
+              <p class="text-muted small mb-0">Smart locks & cameras</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <div class="card border-0 tech-category-card h-100">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-lightbulb fa-3x mb-3 gradient-icon-purple"></i>
+              <h5 class="fw-bold mb-2">Lighting</h5>
+              <p class="text-muted small mb-0">Ambient smart lighting</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <div class="card border-0 tech-category-card h-100">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-wind fa-3x mb-3 gradient-icon-primary"></i>
+              <h5 class="fw-bold mb-2">Climate Control</h5>
+              <p class="text-muted small mb-0">Smart ACs & purifiers</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <div class="card border-0 tech-category-card h-100">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-blender fa-3x mb-3 gradient-icon-info"></i>
+              <h5 class="fw-bold mb-2">Kitchen Tech</h5>
+              <p class="text-muted small mb-0">Smart appliances</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Emerging Tech Section -->
+      <div class="row mb-5">
+        <div class="col-12 mb-4">
+          <h2 class="fw-bold fs-1 border-bottom pb-3" style="border-color: #2A5CFF!important;">
+            <i class="fas fa-microscope me-2"></i>Emerging Tech
+          </h2>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <div class="card border-0 tech-category-card h-100">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-vr-cardboard fa-3x mb-3 gradient-icon-danger"></i>
+              <h5 class="fw-bold mb-2">VR/AR Headsets</h5>
+              <p class="text-muted small mb-0">Immersive experiences</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <div class="card border-0 tech-category-card h-100">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-drone fa-3x mb-3 gradient-icon-success"></i>
+              <h5 class="fw-bold mb-2">Advanced Drones</h5>
+              <p class="text-muted small mb-0">4K filming & AI tracking</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <div class="card border-0 tech-category-card h-100">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-robot fa-3x mb-3 gradient-icon-primary"></i>
+              <h5 class="fw-bold mb-2">Home Robotics</h5>
+              <p class="text-muted small mb-0">Automation helpers</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+          <div class="card border-0 tech-category-card h-100">
+            <div class="card-body text-center p-4">
+              <i class="fas fa-charging-station fa-3x mb-3 gradient-icon-warning"></i>
+              <h5 class="fw-bold mb-2">EV Tech</h5>
+              <p class="text-muted small mb-0">Future of mobility</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <!-- Quick View Modal -->
@@ -358,7 +271,9 @@
         <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
         <div class="row g-4">
           <div class="col-md-6">
-            <img src="https://images.unsplash.com/photo-1607936854279-55e8a4c64888?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" class="img-fluid rounded-3" alt="Product Image">
+            <img
+              src="https://images.unsplash.com/photo-1607936854279-55e8a4c64888?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+              class="img-fluid rounded-3" alt="Product Image">
           </div>
           <div class="col-md-6">
             <h4 class="fw-bold mb-2">Iphone 14</h4>
@@ -380,7 +295,8 @@
             </div>
             <div class="d-grid gap-3">
               <button class="btn btn-primary rounded-pill"><i class="fas fa-cart-plus me-2"></i>Add to Cart</button>
-              <button class="btn btn-outline-secondary rounded-pill"><i class="far fa-heart me-2"></i>Add to Wishlist</button>
+              <button class="btn btn-outline-secondary rounded-pill"><i class="far fa-heart me-2"></i>Add to
+                Wishlist</button>
             </div>
           </div>
         </div>

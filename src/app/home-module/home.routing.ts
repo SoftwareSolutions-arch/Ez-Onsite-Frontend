@@ -9,7 +9,7 @@ const routes: Routes = [
       {path: 'home', component: HomeComponent},
       {path: 'header', component: HeaderComponent},
       {path: 'footer', component: FooterComponent},
-      {path:'product-details', component: ProductDetailsComponent}
+      {path:'product-details/:id', component: ProductDetailsComponent}
 ];
 
 export const HomeRoutes = RouterModule.forChild(routes);
