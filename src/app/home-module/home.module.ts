@@ -8,6 +8,7 @@ import { HomeService } from './home.service';
 import { MenubarComponent } from './menubar/menubar.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CategoryComponent } from './category/category.component';
 
 
 @NgModule({
@@ -16,13 +17,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     MenubarComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CategoryComponent
   ],
   imports: [
     CommonModule,
     HomeRoutes,
     ReactiveFormsModule,
-    FormsModule 
+    FormsModule
   ],
   providers: [
     HomeService

@@ -94,7 +94,7 @@
                 </a>                
                 <ul class="sub-menu" *ngIf="category.subcategories && activeSubmenu === category.name">
                   <li *ngFor="let sub of category.subcategories">
-                    <a class="nav-link sub-item" routerLink="{{ sub.link }}">
+                    <a class="nav-link sub-item"  [routerLink]="['/category/2']" routerLinkActive="router-link-active" >
                       {{ sub.name }}
                     </a>
                   </li>
