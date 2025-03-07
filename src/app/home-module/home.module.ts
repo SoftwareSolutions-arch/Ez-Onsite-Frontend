@@ -6,17 +6,23 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeRoutes } from './home.routing';
 import { HomeService } from './home.service';
 import { MenubarComponent } from './menubar/menubar.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    MenubarComponent
+    MenubarComponent,
+    ProductDetailsComponent
   ],
   imports: [
     CommonModule,
-    HomeRoutes
+    HomeRoutes,
+    ReactiveFormsModule,
+    FormsModule 
   ],
   providers: [
     HomeService

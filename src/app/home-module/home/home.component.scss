@@ -183,3 +183,23 @@ h2.fs-1 {
 .tech-card:hover .quick-view-btn {
   display: block;
 }
+.quick-view-btn {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.2s ease;
+  
+  i {
+    color: #333;
+    font-size: 1.1rem;
+  }
+  
+  &:hover {
+    background: white !important;
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    
+    i {
+      color: #000;
+    }
+  }
+}

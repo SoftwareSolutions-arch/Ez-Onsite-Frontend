@@ -35,14 +35,21 @@
     <!-- Featured Products -->
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 px-3">
       <!-- Product 1 -->
-      <div class="col">
+      <div class="col" [routerLink]="['/product-details']" routerLinkActive="router-link-active">
         <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tech-card position-relative">
-          <div class="quick-view-btn position-absolute top-50 start-50 translate-middle">
-            <button  data-bs-toggle="modal" 
-            data-bs-target="#quickViewModal" class="btn btn-outline-light btn-sm px-3">Quick View</button>
+          <!-- Eye Icon with click prevention -->
+          <div class="position-absolute top-0 start-0 m-2">
+            <button class="btn btn-light btn-sm rounded-circle p-2 quick-view-btn shadow-sm"
+                    (click)="$event.stopPropagation()"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#quickViewModal">
+              <i class="fas fa-eye"></i>
+            </button>
           </div>
+          
           <img src="https://oasis.opstatics.com/content/dam/oasis/page/2023/na/oneplus-11/specs/green-img.png" 
                class="card-img-top" alt="Smartphone">
+          
           <div class="card-body">
             <div class="badge bg-danger mb-2">10% Off</div>
             <h5 class="card-title fw-bold">OnePlus 11 5G</h5>
@@ -60,14 +67,21 @@
         </div>
       </div>
 
-      <div class="col">
+      <div class="col" [routerLink]="['/product-details']" routerLinkActive="router-link-active">
         <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tech-card position-relative">
-          <div class="quick-view-btn position-absolute top-50 start-50 translate-middle">
-            <button  data-bs-toggle="modal" 
-            data-bs-target="#quickViewModal" class="btn btn-outline-light btn-sm px-3">Quick View</button>
+          <!-- Eye Icon with click prevention -->
+          <div class="position-absolute top-0 start-0 m-2">
+            <button class="btn btn-light btn-sm rounded-circle p-2 quick-view-btn shadow-sm"
+                    (click)="$event.stopPropagation()"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#quickViewModal">
+              <i class="fas fa-eye"></i>
+            </button>
           </div>
+          
           <img src="https://oasis.opstatics.com/content/dam/oasis/page/2023/na/oneplus-11/specs/green-img.png" 
                class="card-img-top" alt="Smartphone">
+          
           <div class="card-body">
             <div class="badge bg-danger mb-2">10% Off</div>
             <h5 class="card-title fw-bold">OnePlus 11 5G</h5>
@@ -85,14 +99,21 @@
         </div>
       </div>
 
-      <div class="col">
+      <div class="col" [routerLink]="['/product-details']" routerLinkActive="router-link-active">
         <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tech-card position-relative">
-          <div class="quick-view-btn position-absolute top-50 start-50 translate-middle">
-            <button  data-bs-toggle="modal" 
-            data-bs-target="#quickViewModal" class="btn btn-outline-light btn-sm px-3">Quick View</button>
+          <!-- Eye Icon with click prevention -->
+          <div class="position-absolute top-0 start-0 m-2">
+            <button class="btn btn-light btn-sm rounded-circle p-2 quick-view-btn shadow-sm"
+                    (click)="$event.stopPropagation()"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#quickViewModal">
+              <i class="fas fa-eye"></i>
+            </button>
           </div>
+          
           <img src="https://oasis.opstatics.com/content/dam/oasis/page/2023/na/oneplus-11/specs/green-img.png" 
                class="card-img-top" alt="Smartphone">
+          
           <div class="card-body">
             <div class="badge bg-danger mb-2">10% Off</div>
             <h5 class="card-title fw-bold">OnePlus 11 5G</h5>
@@ -110,14 +131,21 @@
         </div>
       </div>
 
-      <div class="col">
+      <div class="col" [routerLink]="['/product-details']" routerLinkActive="router-link-active">
         <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tech-card position-relative">
-          <div class="quick-view-btn position-absolute top-50 start-50 translate-middle">
-            <button  data-bs-toggle="modal" 
-            data-bs-target="#quickViewModal" class="btn btn-outline-light btn-sm px-3">Quick View</button>
+          <!-- Eye Icon with click prevention -->
+          <div class="position-absolute top-0 start-0 m-2">
+            <button class="btn btn-light btn-sm rounded-circle p-2 quick-view-btn shadow-sm"
+                    (click)="$event.stopPropagation()"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#quickViewModal">
+              <i class="fas fa-eye"></i>
+            </button>
           </div>
+          
           <img src="https://oasis.opstatics.com/content/dam/oasis/page/2023/na/oneplus-11/specs/green-img.png" 
                class="card-img-top" alt="Smartphone">
+          
           <div class="card-body">
             <div class="badge bg-danger mb-2">10% Off</div>
             <h5 class="card-title fw-bold">OnePlus 11 5G</h5>
@@ -322,22 +350,6 @@
     </section>  
 </main>
 
-<!-- Add to main content section before footer -->
-<section class="container-fluid py-5 bg-tech-gradient">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8 text-center">
-        <h3 class="fw-bold mb-4">Tech Newsletter</h3>
-        <p class="text-muted mb-4">Get exclusive deals, product updates, and tech insights weekly</p>
-        <div class="input-group mb-3 w-lg-50 mx-auto">
-          <input type="email" class="form-control rounded-start-pill" placeholder="Enter your email">
-          <button class="btn btn-primary rounded-end-pill px-4">Subscribe</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Quick View Modal -->
 <div class="modal fade" id="quickViewModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -373,39 +385,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- Updated Product Card (add these elements inside each card) -->
-<div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden tech-card">
-  <div class="position-absolute top-0 end-0 m-3">
-    <button class="btn btn-light rounded-circle p-2 wishlist-btn">
-      <i class="far fa-heart"></i>
-    </button>
-  </div>
-  <img src="https://images.unsplash.com/photo-1607936854279-55e8a4c64888?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" class="card-img-top" alt="card-img-top">
-  <div class="card-body">
-    <div class="d-flex justify-content-between align-items-start mb-2">
-      <div class="badge bg-danger">24% Off</div>
-      <span class="badge bg-success small"><i class="fas fa-circle small"></i> In Stock</span>
-    </div>
-    <h5 class="card-title fw-bold">I Phone </h5>
-    <div class="rating mb-3">
-      <i class="fas fa-star text-warning small"></i>
-      <i class="fas fa-star text-warning small"></i>
-      <i class="fas fa-star text-warning small"></i>
-      <i class="fas fa-star text-warning small"></i>
-      <i class="far fa-star text-muted small"></i>
-    </div>
-    <!-- ... rest of card content ... -->
-    <div class="d-flex justify-content-between align-items-center">
-      <!-- ... -->
-      <button class="btn btn-sm btn-outline-primary rounded-pill px-3" 
-              data-bs-toggle="modal" 
-              data-bs-target="#quickViewModal">
-        Quick View
-      </button>
     </div>
   </div>
 </div>
