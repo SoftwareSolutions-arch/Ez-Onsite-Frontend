@@ -115,10 +115,10 @@ $hover-color: #ffffff;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  
+
   &.active {
     left: 0;
-    
+
     .sidebar-backdrop {
       opacity: 1;
       visibility: visible;
@@ -145,6 +145,7 @@ $hover-color: #ffffff;
       display: flex;
       align-items: center;
       transition: all 0.2s ease;
+      justify-content: space-between;
 
       &:hover {
         background: rgba(255, 255, 255, 0.1);
@@ -157,26 +158,73 @@ $hover-color: #ffffff;
       }
     }
 
+    /* Submenu Styles */
     .sub-menu {
-      list-style: none;
-      padding-left: 2rem;
-      margin-top: 0.5rem;
-      display: none;
+      max-height: 0;
+      display: inline-block;
+      transition: max-height 0.3s ease-out;
+      padding-left: 1.5rem;
 
-      li {
-        margin: 0.25rem 0;
+      .nav-item.active & {
+        max-height: 500px;
+      }
 
-        a {
-          color: rgba(255, 255, 255, 0.7);
-          text-decoration: none;
-          padding: 0.5rem;
-          display: block;
-          transition: all 0.2s ease;
+      .sub-item {
+        padding: 0.5rem 1rem;
+        font-size: 0.9em;
+        color: rgba(255, 255, 255, 0.8);
 
-          &:hover {
-            color: white;
-            padding-left: 1rem;
-          }
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+          color: white;
+        }
+      }
+    }
+
+    .nav-item {
+      position: relative;
+
+      .arrow {
+        transition: transform 0.3s ease;
+      }
+
+      &.active .arrow {
+        transform: rotate(90deg);
+      }
+    }
+
+    /* Mobile Cart Fix */
+    @media (max-width: 991px) {
+      .cart-dropdown {
+        right: 0 !important;
+        left: auto !important;
+        width: 90vw;
+        transform: translateX(0) !important;
+      }
+
+      .dropdown-menu-end {
+        right: 0;
+        left: auto;
+      }
+
+      .dropdown {
+        position: static;
+      }
+    }
+
+    /* Improved Cart Dropdown */
+    .cart-dropdown {
+      min-width: 320px;
+
+      .cart-item-image {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+      }
+
+      .dropdown-item {
+        &:hover {
+          background-color: #f8f9fa;
         }
       }
     }
@@ -203,15 +251,16 @@ $hover-color: #ffffff;
     left: -80vw;
   }
 }
+
 // Add these styles to your SCSS
 .cart-dropdown {
   min-width: 320px;
   max-height: 60vh;
   overflow-y: auto;
-  
+
   .dropdown-item {
     transition: background-color 0.2s;
-    
+
     &:hover {
       background-color: #f8f9fa;
     }
@@ -230,4 +279,82 @@ $hover-color: #ffffff;
   top: -5px;
   right: -5px;
   font-size: 0.75rem;
+}
+
+/* Mobile Cart Fix */
+@media (max-width: 991px) {
+  .cart-dropdown {
+    right: 0 !important;
+    left: auto !important;
+    width: 90vw;
+    transform: translateX(0) !important;
+  }
+
+  .dropdown-menu-end {
+    right: 0;
+    left: auto;
+  }
+
+  .dropdown {
+    position: static;
+  }
+}
+
+/* Improved Cart Dropdown */
+.cart-dropdown {
+  min-width: 320px;
+
+  .cart-item-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+  }
+
+  .dropdown-item {
+    &:hover {
+      background-color: #f8f9fa;
+    }
+  }
+}
+
+/* Mobile Cart Fixes */
+@media (max-width: 767px) {
+  .cart-dropdown {
+    position: fixed !important;
+    top: 56px !important;
+    right: 10px !important;
+    left: auto !important;
+    width: 90%;
+    max-width: 400px;
+    transform: none !important;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    // Empty state styling
+    .fa-shopping-cart {
+      opacity: 0.3;
+    }
+  }
+
+  .dropdown-menu-end {
+    right: 0 !important;
+    left: auto !important;
+  }
+}
+
+/* General Cart Improvements */
+.cart-dropdown {
+  h6 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .btn-primary {
+    border-radius: 8px;
+    padding: 0.75rem;
+  }
+
+  .border-top {
+    border-color: #eee !important;
+  }
 }

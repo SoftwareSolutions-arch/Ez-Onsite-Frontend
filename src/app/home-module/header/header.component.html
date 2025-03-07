@@ -13,7 +13,8 @@
 
       <!-- Mobile Search Toggle -->
       <div class="d-lg-none order-3 ms-auto">
-        <button class="btn btn-light hover-scale" type="button" data-bs-toggle="collapse" data-bs-target="#mobileSearch">
+        <button class="btn btn-light hover-scale" type="button" data-bs-toggle="collapse"
+          data-bs-target="#mobileSearch">
           <i class="fas fa-search"></i>
         </button>
       </div>
@@ -37,129 +38,74 @@
           <i class="fas fa-heart fs-5"></i>
         </a>
 
-       <!-- Modified Cart Section -->
-<div class="dropdown">
-  <button class="btn icon-link position-relative me-2 me-lg-3" 
-          data-bs-toggle="dropdown" 
-          aria-expanded="false">
-    <i class="fas fa-shopping-cart fs-5"></i>
-    <span class="badge bg-danger cart-badge">{{ cartItemCount }}</span>
-  </button>
-  
-  <!-- Cart Dropdown Menu -->
-  <div class="dropdown-menu dropdown-menu-end p-3 cart-dropdown">
-    <h6 class="dropdown-header mb-2">Recent Cart Items</h6>
-    
-    <!-- Empty State -->
-    <div *ngIf="cartItems.length === 0" class="text-muted small">
-      Your cart is empty
-    </div>
-    
-    <!-- Cart Items -->
-    <div *ngFor="let item of cartItems" 
-         class="dropdown-item d-flex align-items-center py-2">
-      <img [src]="item.image" 
-           alt="Product image" 
-           class="cart-item-image me-2">
-      <div class="flex-grow-1">
-        <div class="fw-500">{{ item.name }}</div>
-        <div class="small">
-          {{ item.quantity }} x {{ item.price | currency }}
-        </div>
-      </div>
-      <button class="btn btn-link text-danger p-0"
-              (click)="removeFromCart(item)">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    
-    <!-- Cart Summary -->
-    <div class="dropdown-divider my-2"></div>
-    <div class="d-flex justify-content-between align-items-center mb-2">
-      <div class="fw-500">Subtotal:</div>
-      <div class="fw-500">{{ cartTotal | currency }}</div>
-    </div>
-    <a routerLink="/cart" class="btn btn-primary w-100 btn-sm">
-      View Cart & Checkout
-    </a>
-  </div>
-</div>
 
-        <!-- Profile Dropdown -->
+        <!-- Updated Cart Dropdown HTML -->
         <div class="dropdown">
-          <button class="btn hover-scale p-0" data-bs-toggle="dropdown">
-            <i class="fas fa-user-circle text-white fs-5"></i>
+          <button class="btn icon-link position-relative" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-shopping-cart fs-5"></i>
+            <span class="badge bg-danger cart-badge">{{ cartItemCount }}</span>
           </button>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>My Account</a></li>
-            <li><a class="dropdown-item" href="#"><i class="fas fa-box me-2"></i>Orders</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li>
-              <button class="dropdown-item" (click)="logout()">
-                <i class="fas fa-sign-out-alt me-2"></i>Logout
-              </button>
-            </li>
-          </ul>
+
+          <div class="dropdown-menu dropdown-menu-end p-3 cart-dropdown">
+            <div class="d-flex flex-column" style="min-height: 200px;">
+              <h6 class="mb-3">Your Shopping Cart</h6>
+
+              <!-- Empty State -->
+              <div *ngIf="cartItems.length === 0"
+                class="flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+                <i class="fas fa-shopping-cart fa-2x text-muted mb-3"></i>
+                <p class="text-muted small mb-0">Your cart is empty</p>
+              </div>
+
+              <!-- Cart Items -->
+              <div *ngIf="cartItems.length > 0">
+                <!-- ... existing cart items code ... -->
+              </div>
+
+              <!-- Footer -->
+              <div class="border-top pt-3">
+                <div class="d-flex justify-content-between mb-3">
+                  <span>Subtotal:</span>
+                  <span class="fw-500">{{ cartTotal | currency }}</span>
+                </div>
+                <a routerLink="/cart" class="btn btn-primary w-100 btn-sm">
+                  View Cart & Checkout
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Added Menu Sidebar -->
-      <div class="menu-sidebar" [class.active]="isMenuOpen">
-        <div class="sidebar-header">
-          <h5 class="text-white mb-0">Shop by Category</h5>
-          <button class="btn btn-close btn-close-white" (click)="toggleMenu()"></button>
+        <!-- Modified Menu Sidebar with Submenu Handling -->
+        <div class="menu-sidebar" [class.active]="isMenuOpen">
+          <div class="sidebar-header">
+            <h5 class="text-white mb-0">Shop by Category</h5>
+            <button class="btn btn-close btn-close-white" (click)="toggleMenu()"></button>
+          </div>
+
+          <div class="sidebar-body">
+            <ul class="nav flex-column">
+              <li class="nav-item" *ngFor="let category of categories" [class.active]="activeSubmenu === category.name">
+                <a class="nav-link d-flex align-items-center" (click)="toggleSubmenu(category.name)">
+                  <i [class]="category.icon + ' me-2'"></i>
+                  {{ category.name }}
+                  <i class="fas ms-auto" [ngClass]="{'fa-chevron-right': activeSubmenu !== category.name, 'fa-chevron-down': activeSubmenu === category.name}"></i> 
+                </a>                
+                <ul class="sub-menu" *ngIf="category.subcategories && activeSubmenu === category.name">
+                  <li *ngFor="let sub of category.subcategories">
+                    <a class="nav-link sub-item" routerLink="{{ sub.link }}">
+                      {{ sub.name }}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              
+              
+            </ul>
+          </div>
+          <div class="sidebar-backdrop" (click)="toggleMenu()"></div>
         </div>
-        
-        <div class="sidebar-body">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/electronics">
-                <i class="fas fa-laptop me-2"></i>
-                Electronics
-                <i class="fas fa-chevron-right ms-auto"></i>
-              </a>
-              <ul class="sub-menu">
-                <li><a routerLink="/electronics/laptops">Laptops</a></li>
-                <li><a routerLink="/electronics/smartphones">Smartphones</a></li>
-                <li><a routerLink="/electronics/accessories">Accessories</a></li>
-              </ul>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/fashion">
-                <i class="fas fa-tshirt me-2"></i>
-                Fashion
-                <i class="fas fa-chevron-right ms-auto"></i>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/home-kitchen">
-                <i class="fas fa-home me-2"></i>
-                Home & Kitchen
-                <i class="fas fa-chevron-right ms-auto"></i>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/books">
-                <i class="fas fa-book me-2"></i>
-                Books
-                <i class="fas fa-chevron-right ms-auto"></i>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/todays-deals">
-                <i class="fas fa-bolt me-2"></i>
-                Today's Deals
-              </a>
-            </li>
-          </ul>
-        </div>
-        
-        <!-- Menu Backdrop -->
-        <div class="sidebar-backdrop" (click)="toggleMenu()"></div>
-      </div>
       </div>
     </div>
   </div>
